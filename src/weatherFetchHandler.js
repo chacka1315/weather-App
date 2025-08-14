@@ -1,16 +1,13 @@
 async function getWeatherData(location) {
   const cleanData = (data) => {
-    const currentConditions = data.currentConditions;
-    const allWeatherDescription = data.description;
-    const allFifteenDaysWeather = data.days;
+    const weekDescription = data.description;
+    const daysData = data.days;
     const latitude = data.latitude;
     const longitude = data.longitude;
-    const address = data.address;
+    const address = data.resolvedAddress;
     return {
-      currentConditions,
-      allFifteenDaysWeather,
-      allFifteenDaysWeather,
-      allWeatherDescription,
+      weekDescription,
+      daysData,
       longitude,
       latitude,
       address,

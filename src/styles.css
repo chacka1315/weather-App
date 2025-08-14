@@ -70,7 +70,7 @@ h6 {
 #container {
   height: 100vh;
   display: grid;
-  grid-template-rows: 100px 1fr 200px;
+  grid-template-rows: 75px 1fr 200px;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -91,6 +91,7 @@ h6 {
   justify-content: center;
   gap: 10px;
   grid-column: 1/-1;
+  place-self: center;
 }
 #unit svg {
   width: 3rem;
@@ -116,12 +117,20 @@ h6 {
   align-items: center;
 }
 #weatherIcon {
+  place-self: center;
+}
+
+#weatherIcon img {
+  width: 100%;
+  height: auto;
 }
 
 #weatherConditions {
 }
 
 #weatherDescription {
+  grid-column: 1/-1;
+  place-self: center;
 }
 
 #weekForecast {
