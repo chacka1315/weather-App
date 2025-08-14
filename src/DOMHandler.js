@@ -1,4 +1,5 @@
 function DOMHandler() {
+  const container = document.querySelector('#container');
   const tempSpan = document.querySelector('#temp');
   const tempminDiv = document.querySelector('#tempMin');
   const tempmaxDiv = document.querySelector('#tempMax');
@@ -23,7 +24,12 @@ function DOMHandler() {
     tempminDiv.textContent = data.daysData[0].tempmin;
     tempmaxDiv.textContent = data.daysData[0].tempmax;
   };
-  return { displayWeatherData };
+
+  const displayFecthError = () => {
+    container.innerHTML = 'Oops, something goeas wrong...Refresh the page!';
+  };
+
+  return { displayWeatherData, displayFecthError };
 }
 
 export const domHandler = DOMHandler();
