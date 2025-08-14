@@ -1,3 +1,4 @@
 import handleEvent from './eventHandler.js';
 import getWeatherData from './weatherFetchHandler';
-getWeatherData('yamoussoukro');
+import './styles.css';
+handleEvent();
