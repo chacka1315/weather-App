@@ -97,6 +97,7 @@ header div:nth-child(4) {
   grid-row: 2;
   grid-column: 1/-1;
   place-self: center;
+  display: flex;
 }
 
 #logo {
@@ -163,4 +164,16 @@ header div:nth-child(4) {
 }
 
 #weekForecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+#weekForecast img {
+  width: 70%;
+  height: auto;
+}
+
+.foreCastDiv {
+  display: grid;
+  grid-template-rows: 1fr 50px 25px;
 }
