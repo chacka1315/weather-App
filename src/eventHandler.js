@@ -6,10 +6,12 @@ function handleEvent() {
   const unitToogleBtn = document.querySelector('#tempUnitToggle');
   const celciusBtn = document.querySelector('#metric');
   const fahrenheitBtn = document.querySelector('#us');
+  const loadingComponent = document.querySelector('.loadingBtn');
   let userLocation = 'california';
   let unit = 'metric';
 
   unitToogleBtn.addEventListener('change', () => {
+    loadingComponent.classList.add('loadingBtnVisible');
     if (unitToogleBtn.checked) {
       unit = 'us';
       fahrenheitBtn.classList.add('current-unit');
@@ -29,15 +31,19 @@ function handleEvent() {
       } else {
         domHandler.displayFecthError();
       }
+      loadingComponent.classList.remove('loadingBtnVisible');
     });
   });
+
   const regex = new RegExp("[A-Za-zÀ-ÿ'-]{2,100}");
+
   getWeatherBtn.addEventListener('click', () => {
-    userLocation = searchInput.value.trim();
-    if (!regex.test(userLocation)) {
+    if (!regex.test(searchInput.value.trim())) {
       alert('Enter a correct location name !');
       return;
     }
+    userLocation = searchInput.value.trim();
+    loadingComponent.classList.add('loadingBtnVisible');
     getWeatherData(userLocation, unit).then((weatherData) => {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
@@ -49,6 +55,7 @@ function handleEvent() {
         //if we couldnot get data, perhaps connexion problem
         domHandler.displayFecthError();
       }
+      loadingComponent.classList.remove('loadingBtnVisible');
     });
   });
 }

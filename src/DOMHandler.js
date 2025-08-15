@@ -36,7 +36,8 @@ function DOMHandler() {
     getIcon(todayData.hours[currentHour].icon).then(
       (icon) => (iconImg.src = icon)
     );
-    getGIF(todayData.hours[currentHour].icon);
+    getGIF(`${todayData.hours[currentHour].icon} weather`);
+
     const currentDay = document.querySelector('#currentDay');
     currentDay.innerHTML = `Today, ${currentHour}:00`;
 
@@ -73,6 +74,8 @@ function DOMHandler() {
 
   const displayFecthError = () => {
     container.innerHTML = 'Oops, something goes wrong...Refresh the page!';
+    container.style.textAlign = 'center';
+    container.style.fontSize = '4rem';
   };
 
   return { displayWeatherData, displayFecthError, displayWeekData };

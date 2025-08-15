@@ -120,6 +120,22 @@ header div:first-child {
   font-size: 1rem;
   font-weight: 500;
   align-items: center;
+  justify-content: space-between;
+}
+
+.loadingBtn {
+  background-color: #f0b429;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 15px;
+  transform: scale(0);
+  transition: transform 0.3s ease-out;
+}
+
+.loadingBtnVisible {
+  transform: scale(1);
 }
 
 header div:first-child svg {
@@ -143,14 +159,13 @@ header div:nth-child(4) {
 }
 
 #getWeatherBtn {
-  width: 15%;
+  padding: 5px 10px;
+  font-size: 14px;
   border-radius: 15px;
   background-color: var(--secondly-color);
   cursor: pointer;
   border: none;
-  font-size: 14px;
   color: inherit;
-  padding: 2px 5px;
   font-weight: 600;
   transition: transform 0.3s ease;
 }
@@ -194,7 +209,8 @@ header div:nth-child(4) {
 /* content styles */
 #content {
   display: grid;
-  grid-template-columns: 350px 1fr 250px;
+  /* grid-template-columns: 350px 1fr 250px; */
+  grid-template-columns: 1fr 1.5fr 1fr;
   grid-template-rows: 1fr 30px;
 }
 #tempBlock {

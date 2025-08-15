@@ -29,7 +29,7 @@ async function getWeatherData(location, unit) {
       return cleanedData;
     }
   } catch (error) {
-    console.log(`Erro : ${error}`);
+    console.log(`Error : ${error}`);
   }
 }
 
