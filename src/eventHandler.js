@@ -31,8 +31,7 @@ function handleEvent() {
       }
     });
   });
-
-  const regex = new RegExp("[A-Za-zÀ-ÿ\s'-]{2,100}");
+  const regex = new RegExp("[A-Za-zÀ-ÿ'-]{2,100}");
   getWeatherBtn.addEventListener('click', () => {
     userLocation = searchInput.value.trim();
     if (!regex.test(userLocation)) {
@@ -48,7 +47,7 @@ function handleEvent() {
         alert('Bad request, cannot find this location');
       } else {
         //if we couldnot get data, perhaps connexion problem
-        displayFecthError();
+        domHandler.displayFecthError();
       }
     });
   });

@@ -284,9 +284,7 @@ header div:nth-child(4) {
 #contions {
   display: grid;
   grid-template-rows: 30px 1fr;
-  border: 1px solid var(--secondly-color);
   margin-bottom: 10px;
-  background-color: var(--secondly-color);
 }
 
 #contions img {
