@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import getGIF from './GIFhandler';
 function DOMHandler() {
   const container = document.querySelector('#container');
   const tempDiv = document.querySelector('#temperature');
@@ -44,6 +45,7 @@ function DOMHandler() {
 
       const iconIm = document.createElement('img');
       getIcon(day.icon).then((icon) => (iconIm.src = icon));
+      getGIF(day.icon);
 
       const temp = document.createElement('div');
       temp.textContent = `${day.temp}°`;
