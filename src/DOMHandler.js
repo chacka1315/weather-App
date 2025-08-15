@@ -1,13 +1,14 @@
 import { format } from 'date-fns';
 function DOMHandler() {
   const container = document.querySelector('#container');
-  const tempSpan = document.querySelector('#temp');
+  const tempDiv = document.querySelector('#temperature');
   const tempminDiv = document.querySelector('#tempMin');
   const tempmaxDiv = document.querySelector('#tempMax');
   const iconImg = document.querySelector('#weatherIcon>img');
   const conditionDiv = document.querySelector('#weatherConditions');
   const descriptionDiv = document.querySelector('#weatherDescription');
   const weekForecast = document.querySelector('#weekForecast');
+  const location = document.querySelector('#locationResolved');
 
   const getIcon = async (iconName) => {
     const response = await import(`./assets/icons/${iconName}.svg`);
@@ -16,20 +17,21 @@ function DOMHandler() {
   };
 
   const displayWeatherData = (data) => {
-    tempSpan.textContent = data.daysData[0].temp;
+    location.textContent = data.address;
+    tempDiv.textContent = `${data.daysData[0].temp}°`;
     const todayData = data.daysData[0];
     const currentHour = new Date().getHours();
     getIcon(todayData.hours[currentHour].icon).then(
       (icon) => (iconImg.src = icon)
     );
     const hourSpan = document.createElement('span');
-    hourSpan.textContent = `, ${currentHour}:00`;
+    hourSpan.textContent = `Today, ${currentHour}:00`;
     document.querySelector('#currentDay').appendChild(hourSpan);
 
     conditionDiv.textContent = todayData.hours[currentHour].conditions;
     descriptionDiv.textContent = data.daysData[0].description;
-    tempminDiv.textContent = data.daysData[0].tempmin;
-    tempmaxDiv.textContent = data.daysData[0].tempmax;
+    tempminDiv.textContent = `min. ${data.daysData[0].tempmin}°`;
+    tempmaxDiv.textContent = `mac. ${data.daysData[0].tempmax}°`;
   };
 
   const displayWeekData = (data) => {

@@ -1,4 +1,17 @@
 import handleEvent from './eventHandler.js';
 import getWeatherData from './weatherFetchHandler';
+import { domHandler } from './DOMHandler.js';
 import './styles.css';
 handleEvent();
+
+getWeatherData('california').then((weatherData) => {
+  document.querySelector('#container').classList.remove('container');
+
+  if (weatherData) {
+    domHandler.displayWeatherData(weatherData);
+    domHandler.displayWeekData(weatherData);
+    console.log('That is your weather data', weatherData);
+  } else {
+    domHandler.displayFecthError();
+  }
+});

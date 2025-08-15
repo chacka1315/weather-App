@@ -74,6 +74,10 @@ h6 {
   padding: 5px 50px;
 }
 
+.container {
+  visibility: hidden;
+}
+
 header {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;

@@ -3,10 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather Forecast</title>
   </head>
   <body>
-    <div id="container">
+    <div id="container" class="container">
       <header>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -15,14 +21,19 @@
               d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
             />
           </svg>
-          <span id="locationResolved"> here</span>
+          <span id="locationResolved"></span>
         </div>
         <div>
-          <input type="search" placeholder="Enter your location" />
+          <input
+            type="search"
+            id="user_search"
+            placeholder="Enter your location"
+            pattern="^[A-Za-z]+(?:[ '-][A-Za-z]+)*$"
+          />
           <button id="getWeatherBtn">Search</button>
         </div>
         <div id="logo">Meteo</div>
-        <div id="currentDay">Today</div>
+        <div id="currentDay"></div>
       </header>
       <div id="content">
         <div id="tempBlock">
@@ -48,20 +59,21 @@
               d="M15 13V5A3 3 0 0 0 9 5V13A5 5 0 1 0 15 13M12 4A1 1 0 0 1 13 5V8H11V5A1 1 0 0 1 12 4Z"
             />
           </svg>
-          <div id="temperature"><span id="temp">45</span><span>°</span></div>
+          <div id="temperature"></div>
 
           <div id="tempMinMax">
-            <div>min. <span id="tempMin">22</span><span>°</span></div>
-            <div>
-              max.
-              <span id="tempMax">22</span><span>°</span>
-            </div>
+            <div id="tempMin"></div>
+            <div id="tempMax"></div>
           </div>
         </div>
         <div id="weatherIcon"><img src="#" alt="weather icon" /></div>
-        <div id="weatherConditions">condition</div>
 
-        <div id="weatherDescription">description</div>
+        <div>
+          <div id="weatherConditions"></div>
+          <img id="conditionsGIF" src="#" alt="weather conditions GIF" />
+        </div>
+
+        <div id="weatherDescription"></div>
       </div>
 
       <div id="weekForecast"></div>
