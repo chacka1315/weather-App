@@ -20,12 +20,16 @@ async function getWeatherData(location, unit) {
       { mode: 'cors' }
     );
 
-    const response = await APIresponse.json();
-    const locationData = response;
-    const cleanedData = cleanData(locationData);
-    return cleanedData;
+    if (APIresponse.status === 400) {
+      return '';
+    } else {
+      const response = await APIresponse.json();
+      const locationData = response;
+      const cleanedData = cleanData(locationData);
+      return cleanedData;
+    }
   } catch (error) {
-    console.log(error);
+    console.log(`Erro : ${error}`);
   }
 }
 

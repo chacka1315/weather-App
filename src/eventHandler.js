@@ -32,14 +32,23 @@ function handleEvent() {
     });
   });
 
+  const regex = new RegExp("[A-Za-zÀ-ÿ\s'-]{2,100}");
   getWeatherBtn.addEventListener('click', () => {
-    userLocation = searchInput.value;
+    userLocation = searchInput.value.trim();
+    if (!regex.test(userLocation)) {
+      alert('Enter a correct location name !');
+      return;
+    }
     getWeatherData(userLocation, unit).then((weatherData) => {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
         domHandler.displayWeekData(weatherData);
+      } else if (weatherData === '') {
+        //if the serveur can't fin the location
+        alert('Bad request, cannot find this location');
       } else {
-        domHandler.displayFecthError();
+        //if we couldnot get data, perhaps connexion problem
+        displayFecthError();
       }
     });
   });
