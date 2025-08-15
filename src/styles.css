@@ -67,6 +67,27 @@ h6 {
   isolation: isolate;
 }
 
+:root {
+  --primary-color: #59b4fa;
+  --secondly-color: #f0b429;
+  --tertiary-color: #ffffff;
+  --forth-color: #e2e8f0;
+  --font-family: 'Open Sans';
+}
+
+/* general layout design */
+body {
+  font-family:
+    var(--font-family),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+
 #container {
   height: 100vh;
   display: grid;
@@ -78,6 +99,7 @@ h6 {
   visibility: hidden;
 }
 
+/* header styles */
 header {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
@@ -87,10 +109,15 @@ header {
 header div:first-child {
   grid-column: 1;
   display: flex;
+  font-size: 1.2rem;
+  font-weight: 500;
+  align-items: center;
 }
+
 header div:first-child svg {
   width: 2rem;
   height: 2rem;
+  fill: var(--tertiary-color);
 }
 
 header div:nth-child(2) {
@@ -109,14 +136,15 @@ header div:nth-child(4) {
   grid-row: 1;
   justify-self: self-end;
 }
+
 #content {
   display: grid;
-  grid-template-columns: 250px 1fr 250px;
+  grid-template-columns: 350px 1fr 250px;
   grid-template-rows: 1fr 50px;
 }
 #tempBlock {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 3fr 1fr;
 }
 
@@ -130,6 +158,7 @@ header div:nth-child(4) {
 #unit svg {
   width: 3rem;
   height: 3rem;
+  fill: var(--forth-color);
 }
 
 #tempMinMax {
@@ -139,16 +168,19 @@ header div:nth-child(4) {
 }
 
 #tempBlock > svg {
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  fill: var(--secondly-color);
 }
 #temperature {
   font-size: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bolder;
 }
 #weatherIcon {
   place-self: center;

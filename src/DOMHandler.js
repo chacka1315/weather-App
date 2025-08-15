@@ -31,7 +31,7 @@ function DOMHandler() {
     conditionDiv.textContent = todayData.hours[currentHour].conditions;
     descriptionDiv.textContent = data.daysData[0].description;
     tempminDiv.textContent = `min. ${data.daysData[0].tempmin}°`;
-    tempmaxDiv.textContent = `mac. ${data.daysData[0].tempmax}°`;
+    tempmaxDiv.textContent = `max. ${data.daysData[0].tempmax}°`;
   };
 
   const displayWeekData = (data) => {

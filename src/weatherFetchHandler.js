@@ -4,7 +4,8 @@ async function getWeatherData(location) {
     const daysData = data.days;
     const latitude = data.latitude;
     const longitude = data.longitude;
-    const address = data.resolvedAddress;
+    let address = data.resolvedAddress;
+    address = address.at(0).toUpperCase() + address.slice(1, address.length);
     return {
       weekDescription,
       daysData,
