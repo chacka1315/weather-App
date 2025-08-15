@@ -4,7 +4,7 @@ import { domHandler } from './DOMHandler.js';
 import './styles.css';
 handleEvent();
 
-getWeatherData('california').then((weatherData) => {
+getWeatherData('california', 'metric').then((weatherData) => {
   document.querySelector('#container').classList.remove('container');
 
   if (weatherData) {

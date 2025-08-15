@@ -194,7 +194,7 @@ header div:nth-child(4) {
 #tempBlock {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 0.5fr;
 }
 
 #unit {
@@ -202,8 +202,9 @@ header div:nth-child(4) {
   justify-content: center;
   gap: 10px;
   grid-column: 1/-1;
-  place-self: center;
+  align-items: center;
 }
+
 #unit svg {
   width: 3rem;
   height: 3rem;
@@ -215,6 +216,45 @@ header div:nth-child(4) {
   justify-content: space-around;
   grid-column: 1/-1;
   font-size: 1rem;
+}
+#tempBlock button {
+  background-color: var(--primary-color);
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.current-unit {
+  color: var(--tertiary-color);
+}
+
+#tempUnitToggle {
+  appearance: none;
+  border: var(--secondly-color) 2px solid;
+  width: 3.5rem;
+  height: 1.2rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+#tempUnitToggle::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background-color: var(--secondly-color);
+  position: absolute;
+  top: -2px;
+  left: -1px;
+  transition: transform 0.3s ease;
+}
+
+#tempUnitToggle:checked::before {
+  transform: translateX(36px);
+}
+
+#tempUnitToggle:disabled {
+  opacity: 0.8;
 }
 
 #tempBlock > svg {

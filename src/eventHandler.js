@@ -7,7 +7,7 @@ function handleEvent() {
   getWeatherBtn.addEventListener('click', () => {
     const userLocation = searchInput.value;
 
-    getWeatherData(userLocation).then((weatherData) => {
+    getWeatherData(userLocation, (unit = 'metric')).then((weatherData) => {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
         domHandler.displayWeekData(weatherData);
