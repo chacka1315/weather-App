@@ -6,7 +6,6 @@ function handleEvent() {
 
   getWeatherBtn.addEventListener('click', () => {
     const userLocation = searchInput.value;
-    searchInput.textContent = '';
 
     getWeatherData(userLocation).then((weatherData) => {
       if (weatherData) {

@@ -24,11 +24,11 @@ function DOMHandler() {
     getIcon(todayData.hours[currentHour].icon).then(
       (icon) => (iconImg.src = icon)
     );
-    const hourSpan = document.createElement('span');
-    hourSpan.textContent = `Today, ${currentHour}:00`;
-    document.querySelector('#currentDay').appendChild(hourSpan);
 
-    conditionDiv.textContent = todayData.hours[currentHour].conditions;
+    const currentDay = document.querySelector('#currentDay');
+    currentDay.innerHTML = `Today, ${currentHour}:00`;
+
+    conditionDiv.innerHTML = `At this time, ${todayData.hours[currentHour].conditions}`;
     descriptionDiv.textContent = data.daysData[0].description;
     tempminDiv.textContent = `min. ${data.daysData[0].tempmin}°`;
     tempmaxDiv.textContent = `max. ${data.daysData[0].tempmax}°`;
