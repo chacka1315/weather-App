@@ -13,7 +13,7 @@ function DOMHandler() {
   const body = document.querySelector('body');
 
   const changeBkgColor = (hour) => {
-    if (hour > 18 && hour < 6) {
+    if (hour > 18 || hour < 6) {
       body.classList.add('nightBkg');
       body.classList.remove('dayBkg');
     } else {
