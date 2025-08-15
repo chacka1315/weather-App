@@ -11,7 +11,6 @@ getWeatherData('california', 'metric').then((weatherData) => {
   if (weatherData) {
     domHandler.displayWeatherData(weatherData);
     domHandler.displayWeekData(weatherData);
-    console.log('That is your weather data', weatherData);
   } else {
     domHandler.displayFecthError();
   }

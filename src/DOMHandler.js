@@ -10,7 +10,17 @@ function DOMHandler() {
   const descriptionDiv = document.querySelector('#weatherDescription');
   const weekForecast = document.querySelector('#weekForecast');
   const location = document.querySelector('#locationResolved');
+  const body = document.querySelector('body');
 
+  const changeBkgColor = (hour) => {
+    if (hour > 18 && hour < 6) {
+      body.classList.add('nightBkg');
+      body.classList.remove('dayBkg');
+    } else {
+      body.classList.add('dayBkg');
+      body.classList.remove('nightBkg');
+    }
+  };
   const getIcon = async (iconName) => {
     const response = await import(`./assets/icons/${iconName}.svg`);
     const icon = response.default;
@@ -22,10 +32,11 @@ function DOMHandler() {
     tempDiv.textContent = `${data.daysData[0].temp}°`;
     const todayData = data.daysData[0];
     const currentHour = new Date().getHours();
+    changeBkgColor(currentHour);
     getIcon(todayData.hours[currentHour].icon).then(
       (icon) => (iconImg.src = icon)
     );
-
+    getGIF(todayData.hours[currentHour].icon);
     const currentDay = document.querySelector('#currentDay');
     currentDay.innerHTML = `Today, ${currentHour}:00`;
 
@@ -45,7 +56,6 @@ function DOMHandler() {
 
       const iconIm = document.createElement('img');
       getIcon(day.icon).then((icon) => (iconIm.src = icon));
-      getGIF(day.icon);
 
       const temp = document.createElement('div');
       temp.textContent = `${day.temp}°`;

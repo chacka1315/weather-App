@@ -22,7 +22,6 @@ async function getWeatherData(location, unit) {
 
     const response = await APIresponse.json();
     const locationData = response;
-    console.log(locationData);
     const cleanedData = cleanData(locationData);
     return cleanedData;
   } catch (error) {

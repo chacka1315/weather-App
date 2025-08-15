@@ -25,7 +25,6 @@ function handleEvent() {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
         domHandler.displayWeekData(weatherData);
-        console.log('That is your weather data', weatherData);
         unitToogleBtn.desabled = false;
       } else {
         domHandler.displayFecthError();
@@ -39,7 +38,6 @@ function handleEvent() {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
         domHandler.displayWeekData(weatherData);
-        console.log('That is your weather data', weatherData);
       } else {
         domHandler.displayFecthError();
       }
