@@ -1,6 +1,7 @@
 import handleEvent from './eventHandler.js';
 import getWeatherData from './weatherFetchHandler';
 import { domHandler } from './DOMHandler.js';
+import { userLocation } from './eventHandler.js';
 import './styles.css';
 handleEvent();
 
