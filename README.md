@@ -17,7 +17,7 @@ The project was designed to practice API consumption, asynchronous JavaScript, a
 - Dynamic DOM rendering with JavaScript
 - Error handling for invalid inputs
 
-## Live Preview
+## Live Preview | Non-responsive
 [See the website (Voir le site)](https://chacka1315.github.io/weather-App/)
 
 ## 🧱 Built With
