@@ -1,11 +1,22 @@
-async function getWeatherData(location, unit) {
-  const cleanData = (data) => {
+import { WeatherData } from './types/weather';
+
+interface HasKnownProps {
+  description: object;
+  days: any[];
+  longitude: number;
+  latitude: number;
+  resolvedAddress: string;
+}
+
+async function getWeatherData(location: string, unit: string) {
+  const cleanData = (data: HasKnownProps): WeatherData => {
     const weekDescription = data.description;
     const daysData = data.days;
     const latitude = data.latitude;
     const longitude = data.longitude;
     let address = data.resolvedAddress;
-    address = address.at(0).toUpperCase() + address.slice(1, address.length);
+    address =
+      address.charAt(0).toUpperCase() + address.slice(1, address.length);
     return {
       weekDescription,
       daysData,
@@ -24,8 +35,7 @@ async function getWeatherData(location, unit) {
       return '';
     } else {
       const response = await APIresponse.json();
-      const locationData = response;
-      const cleanedData = cleanData(locationData);
+      const cleanedData = cleanData(response);
       return cleanedData;
     }
   } catch (error) {

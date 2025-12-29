@@ -1,5 +1,5 @@
-async function getGIF(weather) {
-  const img = document.querySelector('#conditionsGIF');
+async function getGIF(weather: string) {
+  const img = document.querySelector('#conditionsGIF') as HTMLImageElement;
   try {
     const response = await fetch(
       `https://api.giphy.com/v1/gifs/translate?api_key=w82LiPlYelC1a3wtd75y0dNojybVfRHL&s=${weather}`,

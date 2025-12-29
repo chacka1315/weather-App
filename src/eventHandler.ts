@@ -1,37 +1,43 @@
 import getWeatherData from './weatherFetchHandler';
 import { domHandler } from './DOMHandler';
 function handleEvent() {
-  const searchInput = document.querySelector('input[type=search]');
-  const getWeatherBtn = document.querySelector('#getWeatherBtn');
-  const unitToogleBtn = document.querySelector('#tempUnitToggle');
+  const searchInput = document.querySelector(
+    'input[type=search]'
+  ) as HTMLInputElement;
+  const getWeatherBtn = document.querySelector(
+    '#getWeatherBtn'
+  ) as HTMLButtonElement;
+  const unitToogleBtn = document.querySelector(
+    '#tempUnitToggle'
+  ) as HTMLInputElement;
   const celciusBtn = document.querySelector('#metric');
   const fahrenheitBtn = document.querySelector('#us');
   const loadingComponent = document.querySelector('.loadingBtn');
   let userLocation = 'california';
   let unit = 'metric';
 
-  unitToogleBtn.addEventListener('change', () => {
-    loadingComponent.classList.add('loadingBtnVisible');
+  unitToogleBtn?.addEventListener('change', () => {
+    loadingComponent?.classList.add('loadingBtnVisible');
     if (unitToogleBtn.checked) {
       unit = 'us';
-      fahrenheitBtn.classList.add('current-unit');
-      celciusBtn.classList.remove('current-unit');
+      fahrenheitBtn?.classList.add('current-unit');
+      celciusBtn?.classList.remove('current-unit');
     } else {
       unit = 'metric';
-      celciusBtn.classList.add('current-unit');
-      fahrenheitBtn.classList.remove('current-unit');
+      celciusBtn?.classList.add('current-unit');
+      fahrenheitBtn?.classList.remove('current-unit');
     }
 
-    unitToogleBtn.desabled = true;
+    unitToogleBtn.disabled = true;
     getWeatherData(userLocation, unit).then((weatherData) => {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
         domHandler.displayWeekData(weatherData);
-        unitToogleBtn.desabled = false;
+        unitToogleBtn.disabled = false;
       } else {
         domHandler.displayFecthError();
       }
-      loadingComponent.classList.remove('loadingBtnVisible');
+      loadingComponent?.classList.remove('loadingBtnVisible');
     });
   });
 
@@ -43,7 +49,7 @@ function handleEvent() {
       return;
     }
     userLocation = searchInput.value.trim();
-    loadingComponent.classList.add('loadingBtnVisible');
+    loadingComponent?.classList.add('loadingBtnVisible');
     getWeatherData(userLocation, unit).then((weatherData) => {
       if (weatherData) {
         domHandler.displayWeatherData(weatherData);
@@ -55,7 +61,7 @@ function handleEvent() {
         //if we couldnot get data, perhaps connexion problem
         domHandler.displayFecthError();
       }
-      loadingComponent.classList.remove('loadingBtnVisible');
+      loadingComponent?.classList.remove('loadingBtnVisible');
     });
   });
 }

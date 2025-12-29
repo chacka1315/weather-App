@@ -1,11 +1,11 @@
-import handleEvent from './eventHandler.js';
+import handleEvent from './eventHandler';
 import getWeatherData from './weatherFetchHandler';
-import { domHandler } from './DOMHandler.js';
+import { domHandler } from './DOMHandler';
 import './styles.css';
-handleEvent();
 
+handleEvent();
 getWeatherData('california', 'metric').then((weatherData) => {
-  document.querySelector('#container').classList.remove('container');
+  document.querySelector('#container')?.classList.remove('container');
   if (weatherData) {
     domHandler.displayWeatherData(weatherData);
     domHandler.displayWeekData(weatherData);

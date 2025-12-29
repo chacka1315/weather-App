@@ -1,18 +1,25 @@
+import { WeatherData } from './types/weather';
 import { format } from 'date-fns';
 import getGIF from './GIFhandler';
 function DOMHandler() {
-  const container = document.querySelector('#container');
-  const tempDiv = document.querySelector('#temperature');
-  const tempminDiv = document.querySelector('#tempMin');
-  const tempmaxDiv = document.querySelector('#tempMax');
-  const iconImg = document.querySelector('#weatherIcon>img');
-  const conditionDiv = document.querySelector('#weatherConditions');
-  const descriptionDiv = document.querySelector('#weatherDescription');
-  const weekForecast = document.querySelector('#weekForecast');
-  const location = document.querySelector('#locationResolved');
-  const body = document.querySelector('body');
+  const container = document.querySelector('#container') as HTMLElement;
+  const tempDiv = document.querySelector('#temperature') as HTMLElement;
+  const tempminDiv = document.querySelector('#tempMin') as HTMLElement;
+  const tempmaxDiv = document.querySelector('#tempMax') as HTMLElement;
+  const iconImg = document.querySelector(
+    '#weatherIcon>img'
+  ) as HTMLImageElement;
+  const conditionDiv = document.querySelector(
+    '#weatherConditions'
+  ) as HTMLElement;
+  const descriptionDiv = document.querySelector(
+    '#weatherDescription'
+  ) as HTMLElement;
+  const weekForecast = document.querySelector('#weekForecast') as HTMLElement;
+  const location = document.querySelector('#locationResolved') as HTMLElement;
+  const body = document.querySelector('body') as HTMLBodyElement;
 
-  const changeBkgColor = (hour) => {
+  const changeBkgColor = (hour: number) => {
     if (hour > 18 || hour < 6) {
       body.classList.add('nightBkg');
       body.classList.remove('dayBkg');
@@ -21,13 +28,14 @@ function DOMHandler() {
       body.classList.remove('nightBkg');
     }
   };
-  const getIcon = async (iconName) => {
+
+  const getIcon = async (iconName: string) => {
     const response = await import(`./assets/icons/${iconName}.svg`);
     const icon = response.default;
     return icon;
   };
 
-  const displayWeatherData = (data) => {
+  const displayWeatherData = (data: WeatherData) => {
     location.textContent = data.address;
     tempDiv.textContent = `${data.daysData[0].temp}°`;
     const todayData = data.daysData[0];
@@ -38,7 +46,7 @@ function DOMHandler() {
     );
     getGIF(`${todayData.hours[currentHour].icon} weather`);
 
-    const currentDay = document.querySelector('#currentDay');
+    const currentDay = document.querySelector('#currentDay') as HTMLElement;
     currentDay.innerHTML = `Today, ${currentHour}:00`;
 
     conditionDiv.innerHTML = `At this time, ${todayData.hours[currentHour].conditions}`;
@@ -47,7 +55,7 @@ function DOMHandler() {
     tempmaxDiv.textContent = `max. ${data.daysData[0].tempmax}°`;
   };
 
-  const displayWeekData = (data) => {
+  const displayWeekData = (data: WeatherData) => {
     const weekData = data.daysData.slice(0, 7);
     weekForecast.textContent = '';
 
